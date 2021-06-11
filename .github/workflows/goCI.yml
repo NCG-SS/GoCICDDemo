@@ -43,6 +43,6 @@ jobs: #job to execute on event
       run: |
         go get github.com/franela/goblin 
         go get github.com/tebeka/go2xunit #add package for conversion
-        go test -v
+        go test -v #command to run go test
         go test -v | go2xunit > report.xml #run test again and output as report.xml(to show effect)
         ls # verify that the report is indeeed created
