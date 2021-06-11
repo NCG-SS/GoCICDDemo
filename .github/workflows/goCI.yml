@@ -53,7 +53,7 @@ jobs: #job to execute on event
         files: report.xml #make use of a file we created
     - if: ${{ failure() }}
       name: Create Issues Notifications
-      uses: nashmaniac/creste-issue-action@v1.1
+      uses: nashmaniac/create-issue-action@v1.1
   
       with:
         title: Build Failed
