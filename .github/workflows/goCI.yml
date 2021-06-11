@@ -34,7 +34,7 @@ jobs: #job to execute on event
         path: virtualRepoFolder  #folder to save to in my virtual env
         token: ${{ secrets.GO_SECRET }}  #pass to enter remote hidden repo
     - name: Show hidden files
-      run: |
+      run: |-
         cd virtualRepoFolder # to access the folder of
         ls
         cat myText.txt
@@ -46,3 +46,9 @@ jobs: #job to execute on event
         go test -v #command to run go test
         go test -v | go2xunit > report.xml #run test again and output as report.xml(to show effect)
         ls # verify that the report is indeeed created
+    - name: Publish Unit Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v1 #checkout unit test reporting
+      if: always() #always do it
+      with:
+        files: report.xml #make use of a file we created
+      
