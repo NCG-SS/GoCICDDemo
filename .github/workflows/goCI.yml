@@ -42,6 +42,7 @@ jobs: #job to execute on event
     - name: Install dependencies for GO
       run: |
         go get github.com/franela/goblin 
-        go get github.com/tebeka/go2xunit
+        go get github.com/tebeka/go2xunit #add package for conversion
         go test -v
-     
+        go test -v | go2xunit > report.xml #run test again and output as report.xml(to show effect)
+        ls # verify that the report is indeeed created
